@@ -206,3 +206,5 @@ echo. &echo.
 call del /f "%CA%"
 call del /f "%IA%"
 call del /f "%IAA%"
+@pause
+exit
