@@ -1,10 +1,10 @@
 #define MyAppName "Realtek Ultimate HD Audio"
 #define MyAppName2 "Sound Blaster Connect"
 #define MyAppName3 "Sound Blaster Connect 2"
-#define MyAppVersion GetFileVersion("D:\Armazenamento\Audio\HDA\WIN64_5\RTKVHD64.sys")
+#define MyAppVersion GetFileVersion("F:\Armazenamento\Audio\HDA\Driver64\RTKVHD64.sys")
 #define MyAppPublisher "Alan Finotty"
 #define MyAppURL "http://www.realtek.com/"
-#define MyAppCopyright "Copyright � 2019 Alan Finotty."
+#define MyAppCopyright "Copyright 짤 2019 Alan Finotty."
 
 [Setup]
 ArchitecturesAllowed=x64
@@ -26,7 +26,7 @@ DisableWelcomePage=no
 DisableReadyPage=no
 OutputDir=C:\Users\Alan Finotty\Desktop\Installers
 OutputBaseFilename=AAFDrvInst_HDA_ALL-{#MyAppVersion}
-SetupIconFile=D:\Armazenamento\Audio\HDA\WIN64_5\favicon.ico
+SetupIconFile=F:\Armazenamento\Audio\HDA\Driver64\favicon.ico
 Uninstallable=yes
 UninstallDisplayName={#MyAppName}
 UninstallRestartComputer=True
@@ -36,7 +36,6 @@ Compression=lzma2/ultra64
 SolidCompression=yes
 SignedUninstaller=yes
 SignTool=signtool
-SignTool=signtool2
 SignToolRetryCount=10
 UseSetupLdr=yes
 VersionInfoCopyright={#MyAppCopyright} 
@@ -53,8 +52,8 @@ WindowResizable=True
 WindowStartMaximized=yes
 WindowVisible=True
 WindowShowCaption=False
-WizardImageFile=D:\Armazenamento\Imagens\MyLogos\mywizard.bmp
-WizardSmallImageFile=D:\Armazenamento\Imagens\MyLogos\mysmallwizard.bmp
+WizardImageFile=F:\Armazenamento\Imagens\MyLogos\mywizard.bmp
+WizardSmallImageFile=F:\Armazenamento\Imagens\MyLogos\mysmallwizard.bmp
 WizardStyle=modern
 RestartApplications=False
 DirExistsWarning=no
@@ -111,28 +110,29 @@ ClickFinish=But you need to restart your computer so you can enjoy all the featu
 SelectTasksLabel2=Select Your Options
 
 [Files]
-Source: "D:\Armazenamento\Audio\HDA\WIN64_5\*"; DestDir: "{app}\Driver"; Flags: deleteafterinstall ignoreversion recursesubdirs
-Source: "D:\Armazenamento\Audio\SBC\*"; DestDir: "{app}\SBX"; Flags: deleteafterinstall ignoreversion  recursesubdirs; Tasks: SBX2; MinVersion: 6.1; OnlyBelowVersion: 10.0.14393
-Source: "D:\Armazenamento\Audio\DTS_Audio.msi"; DestDir: "{app}\DTS"; Flags: ignoreversion; Tasks: DTS; MinVersion: 6.3; OnlyBelowVersion: 10.0.14393
-Source: "D:\Armazenamento\Audio\SBC.AppxBundle"; DestDir: "{app}\SBX"; Flags: deleteafterinstall ignoreversion; Tasks: SBX; MinVersion: 10.0.15063
-Source: "D:\Armazenamento\Audio\SBC.bat"; DestDir: "{app}\SBX"; Flags: deleteafterinstall ignoreversion; Tasks: SBX; MinVersion: 10.0.15063
-Source: "D:\Armazenamento\Audio\SBC_UNINST.bat"; DestDir: "{win}\SBX_UNINST"; Flags: ignoreversion; Tasks: SBX; MinVersion: 10.0.15063
-Source: "D:\Armazenamento\Audio\Dependencies\*"; DestDir: "{app}\Runtimes"; Flags: deleteafterinstall ignoreversion; MinVersion: 10.0.15063
-Source: "D:\Armazenamento\Audio\NAHIMIC3.AppxBundle"; DestDir: "{app}\AVO"; Flags: deleteafterinstall ignoreversion; Tasks: AVO; MinVersion: 10.0.15063
-Source: "D:\Armazenamento\Audio\NH3.bat"; DestDir: "{app}\AVO"; Flags: deleteafterinstall ignoreversion; Tasks: AVO; MinVersion: 10.0.15063
-Source: "D:\Armazenamento\Audio\NH3_UNINST.bat"; DestDir: "{win}\AVO_UNINST"; Flags: ignoreversion; Tasks: AVO; MinVersion: 10.0.15063
-Source: "D:\Armazenamento\Audio\ATM.bat"; DestDir: "{app}\ATMOS"; Flags: deleteafterinstall ignoreversion; Tasks: ATM; MinVersion: 10.0.15063
-Source: "D:\Armazenamento\Audio\DolbyATMOS.Appx"; DestDir: "{app}\ATMOS"; Flags: deleteafterinstall ignoreversion; Tasks: ATM; MinVersion: 10.0.15063
-Source: "D:\Armazenamento\Audio\ATM_UNINST.bat"; DestDir: "{win}\ATM_UNINST"; Flags: ignoreversion; Tasks: ATM; MinVersion: 10.0.15063
-Source: "D:\Armazenamento\Audio\ASIO\*"; DestDir: "{app}\ASIO"; Flags: deleteafterinstall ignoreversion
-Source: "D:\Armazenamento\Audio\Licensing\*"; DestDir: "{app}\KGA"; Flags: deleteafterinstall ignoreversion
-Source: "D:\Armazenamento\Cert\Cert.cmd"; Flags: dontcopy; Attribs: hidden
+Source: "F:\Armazenamento\Audio\HDA\Driver64\*"; DestDir: "{app}\Driver"; Flags: deleteafterinstall ignoreversion recursesubdirs
+Source: "F:\Armazenamento\Audio\SBC\*"; DestDir: "{app}\SBX"; Flags: deleteafterinstall ignoreversion  recursesubdirs; Tasks: SBX2; MinVersion: 6.1; OnlyBelowVersion: 10.0.14393
+Source: "F:\Armazenamento\Audio\DTS_Audio.msi"; DestDir: "{app}\DTS"; Flags: ignoreversion; Tasks: DTS; MinVersion: 6.3; OnlyBelowVersion: 10.0.14393
+Source: "F:\Armazenamento\Audio\SBC.AppxBundle"; DestDir: "{app}\SBX"; Flags: deleteafterinstall ignoreversion; Tasks: SBX; MinVersion: 10.0.15063
+Source: "F:\Armazenamento\Audio\SBC.bat"; DestDir: "{app}\SBX"; Flags: deleteafterinstall ignoreversion; Tasks: SBX; MinVersion: 10.0.15063
+Source: "F:\Armazenamento\Audio\SBC_UNINST.bat"; DestDir: "{win}\SBX_UNINST"; Flags: ignoreversion; Tasks: SBX; MinVersion: 10.0.15063
+Source: "F:\Armazenamento\Audio\Dependencies\*"; DestDir: "{app}\Runtimes"; Flags: deleteafterinstall ignoreversion; MinVersion: 10.0.15063
+Source: "F:\Armazenamento\Audio\NAHIMIC3.AppxBundle"; DestDir: "{app}\AVO"; Flags: deleteafterinstall ignoreversion; Tasks: AVO; MinVersion: 10.0.15063
+Source: "F:\Armazenamento\Audio\NH3.bat"; DestDir: "{app}\AVO"; Flags: deleteafterinstall ignoreversion; Tasks: AVO; MinVersion: 10.0.15063
+Source: "F:\Armazenamento\Audio\NH3_UNINST.bat"; DestDir: "{win}\AVO_UNINST"; Flags: ignoreversion; Tasks: AVO; MinVersion: 10.0.15063
+Source: "F:\Armazenamento\Audio\ATM.bat"; DestDir: "{app}\ATMOS"; Flags: deleteafterinstall ignoreversion; Tasks: ATM; MinVersion: 10.0.15063
+Source: "F:\Armazenamento\Audio\DolbyATMOS.Appx"; DestDir: "{app}\ATMOS"; Flags: deleteafterinstall ignoreversion; Tasks: ATM; MinVersion: 10.0.15063
+Source: "F:\Armazenamento\Audio\ATM_UNINST.bat"; DestDir: "{win}\ATM_UNINST"; Flags: ignoreversion; Tasks: ATM; MinVersion: 10.0.15063
+Source: "F:\Armazenamento\Audio\ASIO\*"; DestDir: "{app}\ASIO"; Flags: deleteafterinstall ignoreversion
+Source: "F:\Armazenamento\Audio\Licensing\*"; DestDir: "{app}\KGA"; Flags: deleteafterinstall ignoreversion
+Source: "F:\NewCert\Cert.cmd"; Flags: dontcopy; Attribs: hidden
 
 [Tasks]
 Name: SBX; Description: "Install {#MyAppName2}"; GroupDescription: "Creative Technology"; Flags: checkablealone; MinVersion: 10.0.15063
-Name: SBX\720; Description: "BlasterX 720�"; Flags: exclusive; MinVersion: 10.0.15063
-Name: SBX\C5; Description: "Cinema 5"; Flags: exclusive; MinVersion: 10.0.15063
 Name: SBX2; Description: "Install {#MyAppName3}"; GroupDescription: "Creative Technology"; Flags: checkablealone; MinVersion: 6.1; OnlyBelowVersion: 10.0.14393
+Name: B360; Description: "BlasterX 360째"; GroupDescription: "If you have installed any of the Blaster Connect applications, choose one of the options below. Otherwise, you will also have to select the top option to install the version for your operating system.";Flags: exclusive; MinVersion: 6.1
+Name: B720; Description: "BlasterX 720째"; GroupDescription: "If you have installed any of the Blaster Connect applications, choose one of the options below. Otherwise, you will also have to select the top option to install the version for your operating system.";Flags: exclusive; MinVersion: 6.1
+Name: C5; Description: "Cinema 5"; GroupDescription: "If you have installed any of the Blaster Connect applications, choose one of the options below. Otherwise, you will also have to select the top option to install the version for your operating system."; Flags: exclusive; MinVersion: 10.0.15063
 Name: DTS; Description: "Install DTS Audio"; GroupDescription: "Digital Theater Systems"; Flags: checkablealone; MinVersion: 6.3; OnlyBelowVersion: 10.0.14393
 Name: AVO; Description: "Install A-Volute Nahimic 3"; GroupDescription: "A-Volute Technology"; Flags: checkablealone; MinVersion: 10.0.15063
 Name: ATM; Description: "Install Dolby ATMOS"; GroupDescription: "Dolby Technology"; Flags: checkablealone; MinVersion: 10.0.15063
@@ -293,7 +293,7 @@ begin
 	'DTS Audio (From Windows 8.1 to Windows 10 build 14393)'#13 +
 	'VIA Audio Enhancements (From Windows 7 to Windows 8)'#13 +
   'A-Volute Nahimic 3 (From Windows 10 build 15063)'#13 +
-	'Dolby ATMOS for Gaming (From Windows 10 build 15063)');
+	'Dolby ATMOS (From Windows 10 build 15063)');
 end;
 
 procedure CurStepChanged(CurStep: TSetupStep);
@@ -302,7 +302,8 @@ begin
   begin
   Exec(ExpandConstant('{app}\KGA\GenKGA.exe'), '', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
   Exec(ExpandConstant('{app}\KGA\GenKGA3.exe'), '', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
-	if (Version.Major = 6) and (Version.Minor = 1) or (Version.Major = 6) and (Version.Minor = 2) or (Version.Major = 6) and (Version.Minor = 3) or (Version.Major = 10) and (Version.Minor = 0) and (Version.Build <= 14393) then begin
+	// Select BlasterX 360째
+	if (WizardIsTaskSelected('B360')) then begin
 	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTA30CF234.kga'));
 	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTA200FF2D.kga'));
 	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTAE90C24A.kga'));
@@ -317,9 +318,47 @@ begin
 	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLD14KLI5.kga'));  // DTS Patcher
 	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLE2C3BA1.kga'));
 	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLI37CVX2.kga'));
-	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLLAS4HX2.kga'));                                                                                                                               
+	//DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLLAS4HX2.kga')); 	// Sound BlasterX 360째                                                                                                                              
 	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLMN34SX2.kga'));  // Sound Blaster Cinema 3                                                                                                                                  
-	//DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLNBK2HX2.kga'));  // Sound BlasterX 720�
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLNBK2HX2.kga'));  // Sound BlasterX 720째
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLO3H65X2.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLP22SV21.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLPS4HTX2.kga'));  // Sound Blaster Cinema 5
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLS2SR4X2.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT02H0X2.kga'));   
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT9SJDX2.kga'));  // Sound Blaster Cinema 2
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT11HL3X.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT21H1X2.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT46HL1X.kga'));                                                                                                                                 
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT47H9X2.kga'));  // Sound Blaster Cinema
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT53HURX.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT72HL2X.kga'));                                                                                            
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT99HB0X.kga'));  // Sound Blaster X-Fi MB2 - THX TruStudio Pro
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLTD2H3X2.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLUE8XYX2.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLXS2Q3X2.kga'));  // Sound Blaster X-Fi MB5
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTT78HSK12.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTT92KD23N.kga'));
+	end;
+	// Select BlasterX 720째
+	if (WizardIsTaskSelected('B720')) then begin
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTA30CF234.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTA200FF2D.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTAE90C24A.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTD1JXF23A.kga'));  // Sound Blaster X-Fi MB2 - Sound Blaster Panel - DTS Patcher
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTD3SPO23G.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTD5H2W3DK.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTH6K23AS7.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTL34AF61R.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTL42SW23M.kga'));  // DTS Patcher
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLA20RVB5.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLD2JX234.kga'));  // DTS Patcher
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLD14KLI5.kga'));  // DTS Patcher
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLE2C3BA1.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLI37CVX2.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLLAS4HX2.kga')); 	// Sound BlasterX 360째                                                                                                                               
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLMN34SX2.kga'));  // Sound Blaster Cinema 3                                                                                                                                  
+	//DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLNBK2HX2.kga'));  // Sound BlasterX 720째
 	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLO3H65X2.kga'));
 	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLP22SV21.kga'));
 	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLPS4HTX2.kga'));  // Sound Blaster Cinema 5
@@ -339,83 +378,45 @@ begin
 	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTT78HSK12.kga'));
 	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTT92KD23N.kga'));
 	end;
-// Selected Sound BlasterX 720�
-		if (Version.Major = 10) and (Version.Minor = 0) and (Version.Build >= 15063) and (WizardIsTaskSelected('SBX\720')) then begin
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTA30CF234.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTA200FF2D.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTAE90C24A.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTD1JXF23A.kga'));  // Sound Blaster X-Fi MB2 - Sound Blaster Panel - DTS Patcher
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTD3SPO23G.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTD5H2W3DK.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTH6K23AS7.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTL34AF61R.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTL42SW23M.kga'));  // DTS Patcher
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLA20RVB5.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLD2JX234.kga'));  // DTS Patcher
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLD14KLI5.kga'));  // DTS Patcher
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLE2C3BA1.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLI37CVX2.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLLAS4HX2.kga'));                                                                                                                               
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLMN34SX2.kga'));  // Sound Blaster Cinema 3                                                                                                                                  
-		//DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLNBK2HX2.kga'));  // Sound BlasterX 720�
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLO3H65X2.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLP22SV21.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLPS4HTX2.kga'));  // Sound Blaster Cinema 5
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLS2SR4X2.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT02H0X2.kga'));   
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT9SJDX2.kga'));  // Sound Blaster Cinema 2
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT11HL3X.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT21H1X2.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT46HL1X.kga'));                                                                                                                                 
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT47H9X2.kga'));  // Sound Blaster Cinema
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT53HURX.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT72HL2X.kga'));                                                                                            
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT99HB0X.kga'));  // Sound Blaster X-Fi MB2 - THX TruStudio Pro
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLTD2H3X2.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLUE8XYX2.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLXS2Q3X2.kga')); // Sound Blaster X-Fi MB5
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTT78HSK12.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTT92KD23N.kga'));
-		end;
-// Selected Sound Blaster Cinema 5
-		if (Version.Major = 10) and (Version.Minor = 0) and (Version.Build >= 15063) and (WizardIsTaskSelected('SBX\C5')) then begin
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTA30CF234.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTA200FF2D.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTAE90C24A.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTD1JXF23A.kga'));  // Sound Blaster X-Fi MB2 - Sound Blaster Panel - DTS Patcher
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTD3SPO23G.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTD5H2W3DK.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTH6K23AS7.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTL34AF61R.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTL42SW23M.kga'));  // DTS Patcher
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLA20RVB5.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLD2JX234.kga'));  // DTS Patcher
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLD14KLI5.kga'));  // DTS Patcher
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLE2C3BA1.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLI37CVX2.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLLAS4HX2.kga'));                                                                                                                               
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLMN34SX2.kga'));  // Sound Blaster Cinema 3                                                                                                                                  
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLNBK2HX2.kga'));  // Sound BlasterX 720�
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLO3H65X2.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLP22SV21.kga'));
-		//DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLPS4HTX2.kga'));  // Sound Blaster Cinema 5
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLS2SR4X2.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT02H0X2.kga'));   
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT9SJDX2.kga'));  // Sound Blaster Cinema 2
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT11HL3X.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT21H1X2.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT46HL1X.kga'));                                                                                                                                 
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT47H9X2.kga'));  // Sound Blaster Cinema
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT53HURX.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT72HL2X.kga'));                                                                                            
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT99HB0X.kga'));  // Sound Blaster X-Fi MB2 - THX TruStudio Pro
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLTD2H3X2.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLUE8XYX2.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLXS2Q3X2.kga')); // Sound Blaster X-Fi MB5
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTT78HSK12.kga'));
-		DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTT92KD23N.kga'));
-		end;
-  end;
+// Select Cinema 5 (Only Windows 10)
+	if (Version.Major = 10) and (Version.Minor = 0) and (Version.Build >= 15063) and (WizardIsTaskSelected('SBX\C5')) then begin
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTA30CF234.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTA200FF2D.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTAE90C24A.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTD1JXF23A.kga'));  // Sound Blaster X-Fi MB2 - Sound Blaster Panel - DTS Patcher
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTD3SPO23G.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTD5H2W3DK.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTH6K23AS7.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTL34AF61R.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTL42SW23M.kga'));  // DTS Patcher
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLA20RVB5.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLD2JX234.kga'));  // DTS Patcher
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLD14KLI5.kga'));  // DTS Patcher
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLE2C3BA1.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLI37CVX2.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLLAS4HX2.kga')); 	// Sound BlasterX 360째                                                                                                                               
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLMN34SX2.kga'));  // Sound Blaster Cinema 3                                                                                                                                  
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLNBK2HX2.kga'));  // Sound BlasterX 720째
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLO3H65X2.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLP22SV21.kga'));
+	//DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLPS4HTX2.kga'));  // Sound Blaster Cinema 5
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLS2SR4X2.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT02H0X2.kga'));   
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT9SJDX2.kga'));  // Sound Blaster Cinema 2
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT11HL3X.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT21H1X2.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT46HL1X.kga'));                                                                                                                                 
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT47H9X2.kga'));  // Sound Blaster Cinema
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT53HURX.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT72HL2X.kga'));                                                                                            
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLT99HB0X.kga'));  // Sound Blaster X-Fi MB2 - THX TruStudio Pro
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLTD2H3X2.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLUE8XYX2.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTLXS2Q3X2.kga')); // Sound Blaster X-Fi MB5
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTT78HSK12.kga'));
+	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTT92KD23N.kga'));
+	end;
+ end;
 	if CurStep = ssDone then 
     begin
 	RegDeleteValue(HKLM, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{F132AF7F-7BCA-4EDE-8A7C-958108FE7DBC}_is1', 'EstimatedSize');
