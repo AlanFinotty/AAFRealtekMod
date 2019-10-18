@@ -120,7 +120,6 @@ Source: "F:\Armazenamento\Audio\Dependencies\*"; DestDir: "{app}\Runtimes"; Flag
 Source: "F:\Armazenamento\Audio\NAHIMIC3.AppxBundle"; DestDir: "{app}\AVO"; Flags: deleteafterinstall ignoreversion; Tasks: AVO; MinVersion: 10.0.15063
 Source: "F:\Armazenamento\Audio\NH3.bat"; DestDir: "{app}\AVO"; Flags: deleteafterinstall ignoreversion; Tasks: AVO; MinVersion: 10.0.15063
 Source: "F:\Armazenamento\Audio\NH3_UNINST.bat"; DestDir: "{win}\AVO_UNINST"; Flags: ignoreversion; Tasks: AVO; MinVersion: 10.0.15063
-Source: "F:\Armazenamento\Audio\ATM.bat"; DestDir: "{app}\ATMOS"; Flags: deleteafterinstall ignoreversion; Tasks: ATM; MinVersion: 10.0.15063
 Source: "F:\Armazenamento\Audio\DolbyATMOS.Appx"; DestDir: "{app}\ATMOS"; Flags: deleteafterinstall ignoreversion; Tasks: ATM; MinVersion: 10.0.15063
 Source: "F:\Armazenamento\Audio\ATM_UNINST.bat"; DestDir: "{win}\ATM_UNINST"; Flags: ignoreversion; Tasks: ATM; MinVersion: 10.0.15063
 Source: "F:\Armazenamento\Audio\ASIO\*"; DestDir: "{app}\ASIO"; Flags: deleteafterinstall ignoreversion
@@ -134,7 +133,7 @@ Name: B360; Description: "BlasterX 360°"; GroupDescription: "If you have instal
 Name: B720; Description: "BlasterX 720°"; GroupDescription: "If you have installed any of the Blaster Connect applications, choose one of the options below. Otherwise, you will also have to select the top option to install the version for your operating system.";Flags: exclusive; MinVersion: 6.1
 Name: C5; Description: "Cinema 5"; GroupDescription: "If you have installed any of the Blaster Connect applications, choose one of the options below. Otherwise, you will also have to select the top option to install the version for your operating system."; Flags: exclusive; MinVersion: 10.0.15063
 Name: DTS; Description: "Install DTS Audio"; GroupDescription: "Digital Theater Systems"; Flags: checkablealone; MinVersion: 6.3; OnlyBelowVersion: 10.0.14393
-Name: AVO; Description: "Install A-Volute Nahimic 3"; GroupDescription: "A-Volute Technology"; Flags: checkablealone; MinVersion: 10.0.15063
+Name: AVO; Description: "Install Nahimic 3"; GroupDescription: "A-Volute Technology"; Flags: checkablealone; MinVersion: 10.0.15063
 Name: ATM; Description: "Install Dolby ATMOS"; GroupDescription: "Dolby Technology"; Flags: checkablealone; MinVersion: 10.0.15063
 
 [Run]
@@ -148,14 +147,14 @@ Filename: "{app}\SBX\Alchemy\setup.exe"; Parameters: "-s /s -silent /silent -q /
 Filename: "{app}\SBX\HOAL\setup.exe"; Parameters: "-s /s -silent /silent -q /q -qn /qn -passive /passive /NOCANCEL /NORESTART"; Flags: runhidden; StatusMsg: "Now Installing {#MyAppName3}"; Tasks: SBX2; MinVersion: 6.1; OnlyBelowVersion: 10.0.14393
 Filename: "{app}\SBX\HOAL\oalinst.exe"; Parameters: "-s /s -silent /silent -q /q -qn /qn -passive /passive /NOCANCEL /NORESTART"; Flags: runhidden; StatusMsg: "Now Installing {#MyAppName3}"; Tasks: SBX2; MinVersion: 6.1; OnlyBelowVersion: 10.0.14393
 Filename: "{app}\SBX\SBC.bat"; StatusMsg: "Now Installing {#MyAppName2}"; Tasks: SBX; MinVersion: 10.0.15063
-Filename: "{app}\AVO\NH3.bat"; StatusMsg: "Now Installing A-Volute Nahimic 3"; Tasks: AVO; MinVersion: 10.0.15063
+Filename: "{app}\AVO\NH3.bat"; StatusMsg: "Now Installing Nahimic 3"; Tasks: AVO; MinVersion: 10.0.15063
 Filename: "{app}\ATMOS\ATM.bat"; StatusMsg: "Now Installing Dolby ATMOS for Gaming"; Tasks: ATM; MinVersion: 10.0.15063
 
 [UninstallRun]
 Filename: "{pf64}\Realtek\Audio\HDA\RtlUpd64.exe"; Parameters: "-r"; StatusMsg: "Now Uninstalling {#MyAppName} Modded Driver"; Flags: waituntilterminated
 Filename: "{sys}\msiexec.exe"; Parameters: "/x ""{app}\DTS\DTSAudio.msi"""; StatusMsg: "Now Uninstalling DTS Audio"; Flags: waituntilterminated; Tasks: DTS; MinVersion: 6.3; OnlyBelowVersion: 10.0.14393
 Filename: "{win}\SBX_UNINST\SBC_UNINST.bat"; StatusMsg: "Now Uninstalling {#MyAppName2}"; Flags: waituntilterminated; Tasks: SBX; MinVersion: 10.0.15063
-Filename: "{win}\AVO_UNINST\NH3_UNINST.bat"; StatusMsg: "Now Uninstalling A-Volute Nahimic 3"; Flags: waituntilterminated; Tasks: AVO; MinVersion: 10.0.15063
+Filename: "{win}\AVO_UNINST\NH3_UNINST.bat"; StatusMsg: "Now Uninstalling Nahimic 3"; Flags: waituntilterminated; Tasks: AVO; MinVersion: 10.0.15063
 Filename: "{win}\ATM_UNINST\ATM_UNINST.bat"; StatusMsg: "Now Uninstalling Dolby ATMOS for Gaming"; Flags: waituntilterminated; Tasks: ATM; MinVersion: 10.0.15063 
 
 [UninstallDelete]
@@ -164,8 +163,8 @@ Type: filesandordirs; Name: "{pf64}\Realtek\Audio\*"
 Type: filesandordirs; Name: "{sd}\ProgramData\Creative\SoftwareLock\*"
 Type: filesandordirs; Name: "{sd}\ProgramData\Creative\*"
 Type: filesandordirs; Name: "{win}\SBX_UNINST\*"
-Type: filesandordirs; Name: "{win}\AVO_UNINST\*"
 Type: filesandordirs; Name: "{win}\ATM_UNINST\*"
+Type: filesandordirs; Name: "{win}\AVO_UNINST\*"
 //Not necessary in moment
 //Type: files; Name: "{win}\System32\drivers\rtkhdaud.dat"
 
@@ -178,6 +177,7 @@ var
   MsgPage5: TOutputMsgWizardPage;
 	Version: TWindowsVersion;
   Text: TNewStaticText;
+  S: String;
 
 function InitializeSetup(): Boolean;
 begin
@@ -238,8 +238,8 @@ begin
 	Page := PageFromID(wpWelcome);
 	
 	GetWindowsVersionEx(Version);
-	
-	if (Version.Major = 6) and (Version.Minor = 1) then begin
+
+  if (Version.Major = 6) and (Version.Minor = 1) then begin
 	WizardForm.WelcomeLabel2.Caption := 'I am Alan Finotty. Thank you so much for your preference. Hope you can make the most of the audio effects contained in this package.'#13#13 +
 	'Click Next to continue the {#MyAppName} Setup Wizard.'#13#13#13 +
 	'You are using: Windows 7';
@@ -292,7 +292,7 @@ begin
 	'{#MyAppName3} (From Windows 7 to Windows 10 build 14393)'#13 + 
 	'DTS Audio (From Windows 8.1 to Windows 10 build 14393)'#13 +
 	'VIA Audio Enhancements (From Windows 7 to Windows 8)'#13 +
-  'A-Volute Nahimic 3 (From Windows 10 build 15063)'#13 +
+  'Nahimic 3 (From Windows 10 build 15063)'#13 +
 	'Dolby ATMOS (From Windows 10 build 15063)');
 end;
 
@@ -302,7 +302,7 @@ begin
   begin
   Exec(ExpandConstant('{app}\KGA\GenKGA.exe'), '', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
   Exec(ExpandConstant('{app}\KGA\GenKGA3.exe'), '', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
-	// Select BlasterX 360°
+// Select BlasterX 360°
 	if (WizardIsTaskSelected('B360')) then begin
 	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTA30CF234.kga'));
 	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTA200FF2D.kga'));
@@ -340,7 +340,7 @@ begin
 	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTT78HSK12.kga'));
 	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTT92KD23N.kga'));
 	end;
-	// Select BlasterX 720°
+// Select BlasterX 720°
 	if (WizardIsTaskSelected('B720')) then begin
 	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTA30CF234.kga'));
 	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTA200FF2D.kga'));
@@ -421,10 +421,10 @@ begin
     begin
 	RegDeleteValue(HKLM, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{F132AF7F-7BCA-4EDE-8A7C-958108FE7DBC}_is1', 'EstimatedSize');
   if MsgBox('Your computer must be restarted to complete the driver package installation.'#13 + 'Do you want to restart your PC now ?', mbConfirmation, MB_YESNO) = IDYES then begin
-			Exec(ExpandConstant('{sys}\shutdown.exe'), '/r /f /t 0 /d p:1:2', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
-       end else
-			Exit;
-end;
+    Exec(ExpandConstant('{sys}\shutdown.exe'), '/r /f /t 0 /d p:1:2', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+  end else
+		Exit;
+  end;
 end;
 
 procedure InitializeUninstallProgressForm();
