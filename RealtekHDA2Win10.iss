@@ -121,6 +121,7 @@ Source: "F:\Armazenamento\Audio\NAHIMIC3.AppxBundle"; DestDir: "{app}\AVO"; Flag
 Source: "F:\Armazenamento\Audio\NH3.bat"; DestDir: "{app}\AVO"; Flags: deleteafterinstall ignoreversion; Tasks: AVO; MinVersion: 10.0.15063
 Source: "F:\Armazenamento\Audio\NH3_UNINST.bat"; DestDir: "{win}\AVO_UNINST"; Flags: ignoreversion; Tasks: AVO; MinVersion: 10.0.15063
 Source: "F:\Armazenamento\Audio\DolbyATMOS.Appx"; DestDir: "{app}\ATMOS"; Flags: deleteafterinstall ignoreversion; Tasks: ATM; MinVersion: 10.0.15063
+Source: "F:\Armazenamento\Audio\ATM.bat"; DestDir: "{win}\ATMOS"; Flags: deleteafterinstall ignoreversion; Tasks: ATM; MinVersion: 10.0.15063
 Source: "F:\Armazenamento\Audio\ATM_UNINST.bat"; DestDir: "{win}\ATM_UNINST"; Flags: ignoreversion; Tasks: ATM; MinVersion: 10.0.15063
 Source: "F:\Armazenamento\Audio\ASIO\*"; DestDir: "{app}\ASIO"; Flags: deleteafterinstall ignoreversion
 Source: "F:\Armazenamento\Audio\Licensing\*"; DestDir: "{app}\KGA"; Flags: deleteafterinstall ignoreversion
