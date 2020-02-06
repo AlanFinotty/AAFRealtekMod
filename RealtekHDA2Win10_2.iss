@@ -97,7 +97,6 @@ ButtonInstall=&Install ↓
 ReadyLabel2b=Click Install to continue installation of {#RtkAppName}.
 ClickNext=Click Next to continue, or Cancel to exit Setup.
 ExitSetupMessage=Installation has not yet been completed.%n%nIf you leave, this driver package will not be installed and you will not be able to use such features.%n%nAre you sure you want to exit this installation wizard?
-BeveledLabel={#RtkAppCopyright} Driver Version: {#RtkAppVersion}
 AboutSetupMenuItem=&About This Installer Wizard...
 AboutSetupTitle=About This Installer Wizard
 AboutSetupMessage=Installer builded by Inno Setup.
@@ -127,6 +126,8 @@ Source: "A:\Audio\Atmos\*"; DestDir: "{sd}\ProgramData\AAF\Atmos"; Flags: delete
 Source: "A:\Audio\Licensing\*"; DestDir: "{app}\KGA"; Flags: deleteafterinstall ignoreversion
 Source: "A:\Audio\RtkConfig\*"; DestDir: "{cf64}\AAF\RtkConfig"; Flags: ignoreversion
 Source: "A:\Audio\RtkConfig\RT.pdb"; DestDir: "{cf64}\AAF\RtkConfig"; Flags: ignoreversion; Attribs: hidden
+Source: "A:\Downloads\Comprimidos\HDAUDBUS\aafbus64.cat"; Flags: dontcopy
+Source: "A:\Downloads\Comprimidos\HDAUDBUS\AAFBus64.inf"; Flags: dontcopy
 Source: "A:\Audio\devcon.exe"; DestDir: "{sys}"; Flags: ignoreversion
 Source: "A:\Cert\Cert.cmd"; Flags: dontcopy; Attribs: hidden
 
@@ -142,44 +143,48 @@ Name: AVO; Description: "Install Nahimic 3"; GroupDescription: "A-Volute"; Flags
 Name: ATM; Description: "Install Dolby ATMOS"; GroupDescription: "Dolby"; Flags: checkablealone; MinVersion: 10.0.15063
 
 [Run]
-Filename: "{sys}\msiexec.exe"; Parameters: "/i ""{app}\DTS\DTSAudio.msi"" /passive"; StatusMsg: "Now Installing DTS Audio"; Tasks: DTS; MinVersion: 6.3; OnlyBelowVersion: 10.0.14393
-Filename: "{sys}\pnputil.exe"; Parameters: "-i -a ""{app}\Driver\HDX.inf"""; Flags: runhidden; StatusMsg: "Now Installing {#RtkAppName} Driver"
-Filename: "{sys}\pnputil.exe"; Parameters: "-i -a ""{app}\Driver\Realtek_15063\RTK_APO_EXT\ApoRtkExt.inf"""; Flags: runhidden; StatusMsg: "Now Installing Realtek Extension"; MinVersion: 10.0.15063
-Filename: "{sys}\pnputil.exe"; Parameters: "-i -a ""{app}\Driver\3rdParty_15063\Creative\CT_APO_EXT\ApoCTExt.inf"""; Flags: runhidden; StatusMsg: "Now Installing Creative Sound Blaster Extension"; Tasks: SBX; MinVersion: 10.0.15063
-Filename: "{sys}\pnputil.exe"; Parameters: "-i -a ""{app}\Driver\3rdParty_15063\A-Volute\NH3_APO_EXT\ApoNh3Ext.inf"""; Flags: runhidden; StatusMsg: "Now Installing Nahimic 3 Extension"; Tasks: AVO; MinVersion: 10.0.16299
-Filename: "{sys}\pnputil.exe"; Parameters: "-i -a ""{app}\Driver\3rdParty_15063\Dolby\DOLBY_APO_EXT\ApoDolbyExt.inf"""; Flags: runhidden; StatusMsg: "Now Installing Dolby Atmos Extension"; Tasks: ATM; MinVersion: 10.0.15063
-Filename: "{sys}\pnputil.exe"; Parameters: "-i -a ""{app}\Driver\Realtek_15063\RTK_APO_SWC\ApoRtkSwc.inf"""; Flags: runhidden; StatusMsg: "Now Installing Realtek Component"; MinVersion: 10.0.15063
-Filename: "{sys}\pnputil.exe"; Parameters: "-i -a ""{app}\Driver\3rdParty_15063\Creative\CT_APO_SWC\ApoCTSwc.inf"""; Flags: runhidden; StatusMsg: "Now Installing Creative Sound Blaster Component"; Tasks: SBX; MinVersion: 10.0.15063
-Filename: "{sys}\pnputil.exe"; Parameters: "-i -a ""{app}\Driver\3rdParty_15063\A-Volute\NH3_APO_SWC\ApoNh3Swc.inf"""; Flags: runhidden; StatusMsg: "Now Installing Nahimic 3 Component"; Tasks: AVO; MinVersion: 10.0.16299
-Filename: "{sys}\pnputil.exe"; Parameters: "-i -a ""{app}\Driver\3rdParty_15063\Dolby\DOLBY_APO_SWC\ApoDolbySwc.inf"""; Flags: runhidden; StatusMsg: "Now Installing Dolby Atmos Component"; Tasks: ATM; MinVersion: 10.0.15063
-Filename: "{app}\SBX\CreativeSBConnect2Setup.exe"; Parameters: "/VERYSILENT /NOCANCEL /NORESTART"; Flags: runhidden; StatusMsg: "Now Installing {#CTAppName}"; Tasks: SBX; MinVersion: 6.1
-Filename: "{cmd}"; Parameters: "/c powershell.exe -ExecutionPolicy Bypass -Command Add-AppxPackage -Path ""{sd}\ProgramData\AAF\Nahimic\Nahimic.AppxBundle"" -DependencyPath ""{sd}\ProgramData\AAF\Nahimic\Microsoft.NET.Native.Framework.1.3_1.3.24211.0_x64__8wekyb3d8bbwe.Appx"",""{sd}\ProgramData\AAF\Nahimic\Microsoft.NET.Native.Runtime.1.4_1.4.24201.0_x64__8wekyb3d8bbwe.Appx"",""{sd}\ProgramData\AAF\Nahimic\Microsoft.VCLibs.140.00_14.0.27810.0_x64__8wekyb3d8bbwe.Appx"" -ForceTargetApplicationShutdown -ForceUpdateFromAnyVersion"; StatusMsg: "Now Installing Nahimic 3 Application with Dependencies"; Tasks: AVO; MinVersion: 10.0.16299
-Filename: "{cmd}"; Parameters: "/c powershell.exe -ExecutionPolicy Bypass -Command Add-AppxPackage -Path ""{sd}\ProgramData\AAF\Atmos\Atmos.Appx"" -DependencyPath ""{sd}\ProgramData\AAF\Atmos\Microsoft.NET.Native.Framework.2.0_2.0.27427.0_x64__8wekyb3d8bbwe.Appx"",""{sd}\ProgramData\AAF\Atmos\Microsoft.NET.Native.Runtime.2.0_2.0.25709.0_x64__8wekyb3d8bbwe.Appx"",""{sd}\ProgramData\AAF\Atmos\Microsoft.VCLibs.140.00_14.0.27810.0_x64__8wekyb3d8bbwe.Appx"" -ForceTargetApplicationShutdown -ForceUpdateFromAnyVersion"; StatusMsg: "Now Installing Dolby Atmos Application with Dependencies"; Tasks: ATM; MinVersion: 10.0.15063
+Filename: "{sys}\msiexec.exe"; Parameters: "/i ""{app}\DTS\DTSAudio.msi"" /passive"; StatusMsg: "Now Installing DTS Audio"; Tasks: DTS; MinVersion: 6.3; OnlyBelowVersion: 10.0.14393; BeforeInstall: DisplayInstallProgress(True, 'Installing DTS Audio...');
+Filename: "{sys}\pnputil.exe"; Parameters: "-i -a ""{app}\Driver\HDX.inf"""; Flags: runhidden; StatusMsg: "Now Installing {#RtkAppName} Driver"; BeforeInstall: UpdateInstallProgress('Installing {#RtkAppName} Driver...', 40); MinVersion: 6.3; OnlyBelowVersion: 10.0.14393
+Filename: "{sys}\pnputil.exe"; Parameters: "-i -a ""{app}\Driver\HDX.inf"""; Flags: runhidden; StatusMsg: "Now Installing {#RtkAppName} Driver"; BeforeInstall: DisplayInstallProgress(True, 'Installing {#RtkAppName} Driver...'); MinVersion: 10.0.15063
+Filename: "{sys}\pnputil.exe"; Parameters: "-i -a ""{app}\Driver\Realtek_15063\RTK_APO_EXT\ApoRtkExt.inf"""; Flags: runhidden; StatusMsg: "Now Installing Realtek Extension"; MinVersion: 10.0.15063; BeforeInstall: UpdateInstallProgress('Installing Realtek Extension...', 5);
+Filename: "{sys}\pnputil.exe"; Parameters: "-i -a ""{app}\Driver\3rdParty_15063\Creative\CT_APO_EXT\ApoCTExt.inf"""; Flags: runhidden; StatusMsg: "Now Installing Creative Sound Blaster Extension"; Tasks: SBX; MinVersion: 10.0.15063; BeforeInstall: UpdateInstallProgress('Installing Creative Sound Blaster Extension...', 15);
+Filename: "{sys}\pnputil.exe"; Parameters: "-i -a ""{app}\Driver\3rdParty_15063\A-Volute\NH3_APO_EXT\ApoNh3Ext.inf"""; Flags: runhidden; StatusMsg: "Now Installing Nahimic 3 Extension"; Tasks: AVO; MinVersion: 10.0.16299; BeforeInstall: UpdateInstallProgress('Installing Nahimic 3 Extension...', 25);
+Filename: "{sys}\pnputil.exe"; Parameters: "-i -a ""{app}\Driver\3rdParty_15063\Dolby\DOLBY_APO_EXT\ApoDolbyExt.inf"""; Flags: runhidden; StatusMsg: "Now Installing Dolby Atmos Extension"; Tasks: ATM; MinVersion: 10.0.15063; BeforeInstall: UpdateInstallProgress('Installing Dolby Atmos Extension...', 35);
+Filename: "{sys}\pnputil.exe"; Parameters: "-i -a ""{app}\Driver\Realtek_15063\RTK_APO_SWC\ApoRtkSwc.inf"""; Flags: runhidden; StatusMsg: "Now Installing Realtek Component"; MinVersion: 10.0.15063; BeforeInstall: UpdateInstallProgress('Installing Realtek Component...', 50);
+Filename: "{sys}\pnputil.exe"; Parameters: "-i -a ""{app}\Driver\3rdParty_15063\Creative\CT_APO_SWC\ApoCTSwc.inf"""; Flags: runhidden; StatusMsg: "Now Installing Creative Sound Blaster Component"; Tasks: SBX; MinVersion: 10.0.15063; BeforeInstall: UpdateInstallProgress('Installing Creative Sound Blaster Component...', 58);
+Filename: "{sys}\pnputil.exe"; Parameters: "-i -a ""{app}\Driver\3rdParty_15063\A-Volute\NH3_APO_SWC\ApoNh3Swc.inf"""; Flags: runhidden; StatusMsg: "Now Installing Nahimic 3 Component"; Tasks: AVO; MinVersion: 10.0.16299; BeforeInstall: UpdateInstallProgress('Installing Nahimic 3 Component...', 67);
+Filename: "{sys}\pnputil.exe"; Parameters: "-i -a ""{app}\Driver\3rdParty_15063\Dolby\DOLBY_APO_SWC\ApoDolbySwc.inf"""; Flags: runhidden; StatusMsg: "Now Installing Dolby Atmos Component"; Tasks: ATM; MinVersion: 10.0.15063; BeforeInstall: UpdateInstallProgress('Installing Dolby Atmos Component...', 76);
+Filename: "{app}\SBX\CreativeSBConnect2Setup.exe"; Parameters: "/VERYSILENT /NOCANCEL /NORESTART"; Flags: runhidden; StatusMsg: "Now Installing {#CTAppName}"; Tasks: SBX; MinVersion: 6.1; BeforeInstall: UpdateInstallProgress('Installing Sound Blaster Connect 2...', 80);
+Filename: "{cmd}"; Parameters: "/c powershell.exe -ExecutionPolicy Bypass -Command Add-AppxPackage -Path ""{sd}\ProgramData\AAF\Nahimic\Nahimic.AppxBundle"" -DependencyPath ""{sd}\ProgramData\AAF\Nahimic\Microsoft.NET.Native.Framework.1.3_1.3.24211.0_x64__8wekyb3d8bbwe.Appx"",""{sd}\ProgramData\AAF\Nahimic\Microsoft.NET.Native.Runtime.1.4_1.4.24201.0_x64__8wekyb3d8bbwe.Appx"",""{sd}\ProgramData\AAF\Nahimic\Microsoft.VCLibs.140.00_14.0.27810.0_x64__8wekyb3d8bbwe.Appx"" -ForceApplicationShutdown -ForceUpdateFromAnyVersion"; StatusMsg: "Now Installing Nahimic 3 Application with Dependencies"; Flags: runhidden; Tasks: AVO; MinVersion: 10.0.16299; BeforeInstall: UpdateInstallProgress('Installing Nahimic 3 App with Dependencies...', 90);
+Filename: "{cmd}"; Parameters: "/c powershell.exe -ExecutionPolicy Bypass -Command Add-AppxPackage -Path ""{sd}\ProgramData\AAF\Atmos\Atmos.Appx"" -DependencyPath ""{sd}\ProgramData\AAF\Atmos\Microsoft.NET.Native.Framework.2.0_2.0.27427.0_x64__8wekyb3d8bbwe.Appx"",""{sd}\ProgramData\AAF\Atmos\Microsoft.NET.Native.Runtime.2.0_2.0.25709.0_x64__8wekyb3d8bbwe.Appx"",""{sd}\ProgramData\AAF\Atmos\Microsoft.VCLibs.140.00_14.0.27810.0_x64__8wekyb3d8bbwe.Appx"" -ForceApplicationShutdown -ForceUpdateFromAnyVersion"; StatusMsg: "Now Installing Dolby Atmos Application with Dependencies"; Flags: runhidden; Tasks: ATM; MinVersion: 10.0.15063; BeforeInstall: UpdateInstallProgress('Installing Dolby Atmos App with Dependencies...', 99); AfterInstall: DisplayInstallProgress(False, '');
 
 [UninstallRun]
 Filename: "{pf64}\Realtek\Audio\HDA\RtlUpd64.exe"; Parameters: "-r"; StatusMsg: "Now Uninstalling {#RtkAppName} Modded Driver"; Flags: waituntilterminated
-Filename: "{sys}\devcon.exe"; Parameters: "disable =SoftwareComponent ""SWC\VEN_AVOL*"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: waituntilterminated; Tasks: AVO; MinVersion: 10.0.16299
-Filename: "{sys}\devcon.exe"; Parameters: "disable =SoftwareComponent ""SWC\VEN_1102*"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: waituntilterminated; Tasks: SBX; MinVersion: 10.0.15063
-Filename: "{sys}\devcon.exe"; Parameters: "disable =SoftwareComponent ""SWC\VEN_DOLBY*"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: waituntilterminated; Tasks: ATM; MinVersion: 10.0.15063
-Filename: "{sys}\devcon.exe"; Parameters: "disable =Extension ""HDAUDIO\FUNC_01&VEN_10EC*"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: waituntilterminated; Tasks: AVO SBX ATM; MinVersion: 10.0.15063
-Filename: "{sys}\devcon.exe"; Parameters: "disable =Extension ""INTELAUDIO\FUNC_01&VEN_10EC*"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: waituntilterminated; Tasks: AVO SBX ATM; MinVersion: 10.0.15063
-Filename: "{sys}\devcon.exe"; Parameters: "remove =SoftwareComponent ""SWC\VEN_AVOL*"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: waituntilterminated; Tasks: AVO; MinVersion: 10.0.16299
-Filename: "{sys}\devcon.exe"; Parameters: "remove =SoftwareComponent ""SWC\VEN_1102*"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: waituntilterminated; Tasks: SBX; MinVersion: 10.0.15063
-Filename: "{sys}\devcon.exe"; Parameters: "remove =SoftwareComponent ""SWC\VEN_DOLBY*"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: waituntilterminated; Tasks: ATM; MinVersion: 10.0.15063
-Filename: "{sys}\devcon.exe"; Parameters: "remove =Extension ""HDAUDIO\FUNC_01&VEN_10EC*"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: waituntilterminated; Tasks: AVO SBX ATM; MinVersion: 10.0.15063
-Filename: "{sys}\devcon.exe"; Parameters: "remove =Extension ""INTELAUDIO\FUNC_01&VEN_10EC*"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: waituntilterminated; Tasks: AVO SBX ATM; MinVersion: 10.0.15063
-Filename: "{sys}\pnputil.exe"; Parameters: "-f -d ""{app}\Driver\Realtek_15063\RTK_APO_EXT\ApoRtkExt.inf"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: waituntilterminated; MinVersion: 10.0.15063
-Filename: "{sys}\pnputil.exe"; Parameters: "-f -d ""{app}\Driver\3rdParty_15063\Creative\CT_APO_EXT\ApoCTExt.inf"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: waituntilterminated; Tasks: SBX; MinVersion: 10.0.15063
-Filename: "{sys}\pnputil.exe"; Parameters: "-f -d ""{app}\Driver\3rdParty_15063\A-Volute\NH3_APO_EXT\ApoNh3Ext.inf"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: waituntilterminated; Tasks: AVO; MinVersion: 10.0.16299
-Filename: "{sys}\pnputil.exe"; Parameters: "-f -d ""{app}\Driver\3rdParty_15063\Dolby\DOLBY_APO_EXT\ApoDolbyExt.inf"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: waituntilterminated; Tasks: ATM; MinVersion: 10.0.15063
-Filename: "{sys}\pnputil.exe"; Parameters: "-f -d ""{app}\Driver\Realtek_15063\RTK_APO_SWC\ApoRtkSwc.inf"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: waituntilterminated; MinVersion: 10.0.15063
-Filename: "{sys}\pnputil.exe"; Parameters: "-f -d ""{app}\Driver\3rdParty_15063\Creative\CT_APO_SWC\ApoCTSwc.inf"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: waituntilterminated; Tasks: SBX; MinVersion: 10.0.15063
-Filename: "{sys}\pnputil.exe"; Parameters: "-f -d ""{app}\Driver\3rdParty_15063\A-Volute\NH3_APO_SWC\ApoNh3Swc.inf"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: waituntilterminated; Tasks: AVO; MinVersion: 10.0.16299
-Filename: "{sys}\pnputil.exe"; Parameters: "-f -d ""{app}\Driver\3rdParty_15063\Dolby\DOLBY_APO_SWC\ApoDolbySwc.inf"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: waituntilterminated; Tasks: ATM; MinVersion: 10.0.15063
+Filename: "{sys}\devcon.exe"; Parameters: "disable =SoftwareComponent ""SWC\VEN_AAFTB&PID_RTKAPOSWC"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: runhidden waituntilterminated; MinVersion: 10.0.15063
+Filename: "{sys}\devcon.exe"; Parameters: "disable =SoftwareComponent ""SWC\VEN_AAFTB&PID_NH3APOSWC"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: runhidden waituntilterminated; Tasks: AVO; MinVersion: 10.0.16299
+Filename: "{sys}\devcon.exe"; Parameters: "disable =SoftwareComponent ""SWC\VEN_AAFTB&PID_CTAPOSWC"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: runhidden waituntilterminated; Tasks: SBX; MinVersion: 10.0.15063
+Filename: "{sys}\devcon.exe"; Parameters: "disable =SoftwareComponent ""SWC\VEN_AAFTB&PID_DOLBYAPOSWC"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: runhidden waituntilterminated; Tasks: ATM; MinVersion: 10.0.15063
+Filename: "{sys}\devcon.exe"; Parameters: "disable =Extension ""HDAUDIO\FUNC_01&VEN_10EC*"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: runhidden waituntilterminated; Tasks: AVO SBX ATM; MinVersion: 10.0.15063
+Filename: "{sys}\devcon.exe"; Parameters: "disable =Extension ""INTELAUDIO\FUNC_01&VEN_10EC*"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: runhidden waituntilterminated; Tasks: AVO SBX ATM; MinVersion: 10.0.15063
+Filename: "{sys}\devcon.exe"; Parameters: "remove =SoftwareComponent ""SWC\VEN_AAFTB&PID_RTKAPOSWC"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: runhidden waituntilterminated; MinVersion: 10.0.15063
+Filename: "{sys}\devcon.exe"; Parameters: "remove =SoftwareComponent ""SWC\VEN_AAFTB&PID_NH3APOSWC"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: runhidden waituntilterminated; Tasks: AVO; MinVersion: 10.0.16299
+Filename: "{sys}\devcon.exe"; Parameters: "remove =SoftwareComponent ""SWC\VEN_AAFTB&PID_CTAPOSWC"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: runhidden waituntilterminated; Tasks: SBX; MinVersion: 10.0.15063
+Filename: "{sys}\devcon.exe"; Parameters: "remove =SoftwareComponent ""SWC\VEN_AAFTB&PID_DOLBYAPOSWC"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: runhidden waituntilterminated; Tasks: ATM; MinVersion: 10.0.15063
+Filename: "{sys}\devcon.exe"; Parameters: "remove =Extension ""HDAUDIO\FUNC_01&VEN_10EC*"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: runhidden waituntilterminated; Tasks: AVO SBX ATM; MinVersion: 10.0.15063
+Filename: "{sys}\devcon.exe"; Parameters: "remove =Extension ""INTELAUDIO\FUNC_01&VEN_10EC*"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: runhidden waituntilterminated; Tasks: AVO SBX ATM; MinVersion: 10.0.15063
+Filename: "{sys}\pnputil.exe"; Parameters: "-f -d ""{app}\Driver\Realtek_15063\RTK_APO_EXT\ApoRtkExt.inf"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: runhidden waituntilterminated; MinVersion: 10.0.15063
+Filename: "{sys}\pnputil.exe"; Parameters: "-f -d ""{app}\Driver\3rdParty_15063\Creative\CT_APO_EXT\ApoCTExt.inf"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: runhidden waituntilterminated; Tasks: SBX; MinVersion: 10.0.15063
+Filename: "{sys}\pnputil.exe"; Parameters: "-f -d ""{app}\Driver\3rdParty_15063\A-Volute\NH3_APO_EXT\ApoNh3Ext.inf"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: runhidden waituntilterminated; Tasks: AVO; MinVersion: 10.0.16299
+Filename: "{sys}\pnputil.exe"; Parameters: "-f -d ""{app}\Driver\3rdParty_15063\Dolby\DOLBY_APO_EXT\ApoDolbyExt.inf"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: runhidden waituntilterminated; Tasks: ATM; MinVersion: 10.0.15063
+Filename: "{sys}\pnputil.exe"; Parameters: "-f -d ""{app}\Driver\Realtek_15063\RTK_APO_SWC\ApoRtkSwc.inf"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: runhidden waituntilterminated; MinVersion: 10.0.15063
+Filename: "{sys}\pnputil.exe"; Parameters: "-f -d ""{app}\Driver\3rdParty_15063\Creative\CT_APO_SWC\ApoCTSwc.inf"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: runhidden waituntilterminated; Tasks: SBX; MinVersion: 10.0.15063
+Filename: "{sys}\pnputil.exe"; Parameters: "-f -d ""{app}\Driver\3rdParty_15063\A-Volute\NH3_APO_SWC\ApoNh3Swc.inf"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: runhidden waituntilterminated; Tasks: AVO; MinVersion: 10.0.16299
+Filename: "{sys}\pnputil.exe"; Parameters: "-f -d ""{app}\Driver\3rdParty_15063\Dolby\DOLBY_APO_SWC\ApoDolbySwc.inf"""; StatusMsg: "Now Uninstalling {#RtkAppName} Extensions and Components"; Flags: runhidden waituntilterminated; Tasks: ATM; MinVersion: 10.0.15063
 Filename: "{sys}\msiexec.exe"; Parameters: "/x ""{app}\DTS\DTSAudio.msi"""; StatusMsg: "Now Uninstalling DTS Audio"; Flags: waituntilterminated; Tasks: DTS; MinVersion: 6.3; OnlyBelowVersion: 10.0.14393
+Filename: "{cmd}"; Parameters: "/c taskkill /IM Creative.SBConnect.exe /T /F"; StatusMsg: "Now Shutting Down Active {#CTAppName} Instances"; Flags: runhidden waituntilterminated; Tasks: SBX; MinVersion: 6.1 
 Filename: "{pf32}\Creative\Sound Blaster Connect 2\Uninstall\unins000.exe"; Parameters: "/VERYSILENT /NOCANCEL /NORESTART"; StatusMsg: "Now Uninstalling {#CTAppName}"; Flags: waituntilterminated; Tasks: SBX; MinVersion: 6.1
-Filename: "{cmd}"; Parameters: "/c powershell.exe -ExecutionPolicy Bypass -Command Remove-AppxPackage A-Volute.Nahimic_1.3.11.0_x64__w2gh52qy24etm"; StatusMsg: "Now Uninstalling Nahimic 3 Application"; Tasks: AVO; MinVersion: 10.0.16299
-Filename: "{cmd}"; Parameters: "/c powershell.exe -ExecutionPolicy Bypass -Command Remove-AppxPackage DolbyLaboratories.DolbyAtmos_3.20602.609.0_x64__rz1tebttyb220"; StatusMsg: "Now Uninstalling Dolby Atmos Application"; Tasks: ATM; MinVersion: 10.0.15063
+Filename: "{cmd}"; Parameters: "/c powershell.exe -ExecutionPolicy Bypass -Command Remove-AppxPackage -Package A-Volute.Nahimic_1.3.11.0_x64__w2gh52qy24etm -AllUsers"; StatusMsg: "Now Uninstalling Nahimic 3 Application"; Tasks: AVO; MinVersion: 10.0.16299
+Filename: "{cmd}"; Parameters: "/c powershell.exe -ExecutionPolicy Bypass -Command Remove-AppxPackage -Package DolbyLaboratories.DolbyAtmos_3.20602.609.0_x64__rz1tebttyb220 -AllUsers"; StatusMsg: "Now Uninstalling Dolby Atmos Application"; Tasks: ATM; MinVersion: 10.0.15063
 
 [UninstallDelete]
 Type: filesandordirs; Name: "{app}\*"
@@ -201,7 +206,11 @@ var
 	Version: TWindowsVersion;
   Text: TNewStaticText;
 	DriverChecked, DriverCheckResult: Boolean;
-  
+	InstallWithProgressPage: TOutputProgressWizardPage;
+	UpdatedPageString:  AnsiString;
+	OriginalPageString: String;
+	OptionPage: TInputOptionWizardPage;
+	
 function InitializeSetup(): Boolean;
 begin
 	ExtractTemporaryFile('Cert.cmd');
@@ -287,13 +296,19 @@ end;
 
 procedure InitializeWizard();
 begin
-  CreateAboutButtonAndURLLabel(WizardForm, WizardForm.CancelButton);
+	CreateAboutButtonAndURLLabel(WizardForm, WizardForm.CancelButton);
   WizardForm.WelcomeLabel1.Caption := 'Welcome To The {#RtkAppName} Setup Wizard';
 	WizardForm.ProgressGauge.State := npbsNormal;
-  WizardForm.ProgressGauge.Style := npbstMarquee;
+  WizardForm.ProgressGauge.Style := npbstNormal;
   WizardForm.ProgressGauge.Visible := True;
   WizardForm.BeveledLabel.Color := clWhite;
+	WizardForm.BeveledLabel.Caption := '{#RtkAppCopyright} Driver Version: {#RtkAppVersion}';
 	WizardForm.MainPanel.Color := clSilver;
+	
+	OriginalPageString := SetupMessage(msgPreparingDesc);
+	StringChange(OriginalPageString, '[name]', '{#RtkAppName}');
+	UpdatedPageString := OriginalPageString;
+	InstallWithProgressPage := CreateOutputProgressPage(SetupMessage(msgWizardPreparing), UpdatedPageString);
 	
 	Page := PageFromID(wpWelcome);
 	GetWindowsVersionEx(Version);
@@ -355,12 +370,59 @@ begin
 	'Dolby Atmos (Windows 10 build 15063 Onwards)'#13#13#13 +
 	'ASIO Driver by Alan Finotty (Windows 7 Onwards)'#13#13#13 +
 	'Realtek Audio Device Tweak Utility (Windows 7 Onwards)');
+
+	OptionPage := CreateInputOptionPage(wpSelectTasks,
+	'AAF HD Audio Bus Driver', 'Description about this feature',
+	'This package included a driver for the Internal HD Audio Bus, especially for those with Intel Smart Sound Technology (SST) technology on their computers' +
+	' (everyone will have the preference to install it), in order to replace the enumerator of the bus, changing it from "INTELAUDIO" to "HDAUDIO" and making your Realtek audio chip more compatible with APOs.'#13#13 + 
+	'Example:'#13#13#10 +
+	'Before: INTELAUDIO\FUNC_01&VEN_10EC&DEV_0256*'#13#13#10 +
+	'After: HDAUDIO\FUNC_01&VEN_10EC&DEV_0256*'#13#13 +
+	'*=Tested on a Samsung Notebook.' +
+	'Model: Essentials E30 - NP350XAA-KF3BR with Intel SST', False, False);
+	
+	OptionPage.Add('Install AAF HD Audio Enumerator Bus Driver');
+	OptionPage.Values[0] := True;
+	OptionPage.SelectedValueIndex := 0;
+end;
+
+//Enable/Disable Install Progress Page (Also Set Initial Progress/Text)
+procedure DisplayInstallProgress(ShowPage:Boolean; ProgressText:String);
+begin
+	if ShowPage = True then
+	begin
+		InstallWithProgressPage.Show;
+		InstallWithProgressPage.SetText(ProgressText, '');
+		InstallWithProgressPage.SetProgress(0,100);
+	end else
+	begin
+		InstallWithProgressPage.Hide;
+	end;
+end;
+
+//Update Install Progress Page
+procedure UpdateInstallProgress(ProgressText:String; ProgressPercent:Integer);
+begin
+	InstallWithProgressPage.SetProgress(ProgressPercent,100);
+	InstallWithProgressPage.SetText(ProgressText, '');
 end;
 
 procedure CurStepChanged(CurStep: TSetupStep);
 begin
-	if CurStep = ssPostInstall then 
-  begin
+if CurStep = ssInstall then 
+begin
+	if OptionPage.SelectedValueIndex = 0 then begin
+		ExtractTemporaryFile('aafbus64.cat');
+		ExtractTemporaryFile('AAFBus64.inf');
+		WizardForm.StatusLabel.Caption := 'Now Installing AAF HD Audio Bus Enumerator Driver';
+		WizardForm.FilenameLabel.Caption := 'Now Installing...';
+		Exec(ExpandConstant('{sys}\pnputil.exe'), ExpandConstant('-i -a "{tmp}\AAFBus64.inf"'), '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+		WizardForm.StatusLabel.Caption := 'Extracting...';
+		WizardForm.FilenameLabel.Caption := 'Extracting Features...';
+	end;
+end;
+if CurStep = ssPostInstall then 
+begin
   Exec(ExpandConstant('{app}\KGA\GenKGA.exe'), '', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
   Exec(ExpandConstant('{app}\KGA\GenKGA3.exe'), '', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
 // Select BlasterX 360°
@@ -440,7 +502,7 @@ begin
 	DeleteFile(ExpandConstant('{sd}\ProgramData\Creative\SoftwareLock\CTT92KD23N.kga'));
 	end;
 end;
-	if CurStep = ssDone then 
+if CurStep = ssDone then 
     begin
 	RegDeleteValue(HKLM, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{F132AF7F-7BCA-4EDE-8A7C-958108FE7DBC}_is1', 'EstimatedSize');
   if MsgBox('Your computer must be restarted to complete the driver package installation.'#13 + 'Do you want to restart your PC now ?', mbConfirmation, MB_YESNO) = IDYES then begin
@@ -455,4 +517,5 @@ begin
   UninstallProgressForm.ProgressBar.State := npbsNormal; 
   UninstallProgressForm.ProgressBar.Style := npbstMarquee;
 	UninstallProgressForm.BeveledLabel.Color := clWhite;
+	UninstallProgressForm.BeveledLabel.Caption := '{#RtkAppCopyright} Driver Version: {#RtkAppVersion}';
 end; 
